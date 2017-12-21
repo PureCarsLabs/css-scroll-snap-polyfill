@@ -1,9 +1,9 @@
 {
   "name": "css-scroll-snap-polyfill",
   "version": "0.1.0",
-  "main": "dist/scroll-snap-polyfill.cjs.js",
-  "module": "dist/scroll-snap-polyfill.esm.js",
-  "browser": "dist/scroll-snap-polyfill.umd.js",
+  "main": "dist/css-scroll-snap-polyfill.cjs.js",
+  "module": "dist/css-scroll-snap-polyfill.esm.js",
+  "browser": "dist/css-scroll-snap-polyfill.umd.js",
   "dependencies": {
     "polyfill": "^0.1.0"
   },

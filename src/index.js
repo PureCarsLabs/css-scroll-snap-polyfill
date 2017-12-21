@@ -390,8 +390,8 @@ function getNextElementSnapPoint(scrollObj, obj, direction) {
     currentIteration = l-1;
     const lastSnapElement = obj.snapElements[currentIteration]
     const lastSnapCoords = {
-      x: (lastSnapElement.offsetLeft - scrollObj.offsetLeft) + getXSnapLength(lastSnapElement, lastSnapElement.scrollSnapAlignment.x, direction),
-      y: (lastSnapElement.offsetTop - scrollObj.offsetTop) + getYSnapLength(lastSnapElement, lastSnapElement.scrollSnapAlignment.y, direction)
+      x: (getLeft(lastSnapElement) - getLeft(scrollObj)) + getXSnapLength(lastSnapElement, lastSnapElement.scrollSnapAlignment.x, direction),
+      y: (getTop(lastSnapElement) - getTop(scrollObj)) + getYSnapLength(lastSnapElement, lastSnapElement.scrollSnapAlignment.y, direction)
     }
     lastSnapElement.snapCoords = lastSnapCoords
     // the for loop stopped at the last element
@@ -402,8 +402,8 @@ function getNextElementSnapPoint(scrollObj, obj, direction) {
 
   const currentSnapElement = obj.snapElements[currentIteration]
   const currentSnapCoords = {
-    x: currentIteration === 0 ? 0 : (currentSnapElement.offsetLeft - scrollObj.offsetLeft) + getXSnapLength(currentSnapElement, currentSnapElement.scrollSnapAlignment.x, direction),
-    y: currentIteration === 0 ? 0 : (currentSnapElement.offsetTop - scrollObj.offsetTop) + getYSnapLength(currentSnapElement, currentSnapElement.scrollSnapAlignment.y, direction)
+    x: currentIteration === 0 ? 0 : (getLeft(currentSnapElement) - getLeft(scrollObj)) + getXSnapLength(currentSnapElement, currentSnapElement.scrollSnapAlignment.x, direction),
+    y: currentIteration === 0 ? 0 : (getTop(currentSnapElement) - getTop(scrollObj)) + getYSnapLength(currentSnapElement, currentSnapElement.scrollSnapAlignment.y, direction)
   }
   currentSnapElement.snapCoords = currentSnapCoords
   const xThreshold = currentSnapCoords.x + (direction.x * getWidth(currentSnapElement) * CONSTRAINT_DECIMAL)
@@ -416,8 +416,8 @@ function getNextElementSnapPoint(scrollObj, obj, direction) {
 
     // get objects snap coords by adding obj.top + obj.snaplength.y
     snapCoords = {
-      y: i === 0 ? 0 : (currentIteratedObj.offsetTop - scrollObj.offsetTop) + getYSnapLength(currentIteratedObj, currentIteratedObj.scrollSnapAlignment.y, direction),
-      x: i === 0 ? 0 : (currentIteratedObj.offsetLeft - scrollObj.offsetLeft) + getXSnapLength(currentIteratedObj, currentIteratedObj.scrollSnapAlignment.x, direction)
+      y: i === 0 ? 0 : (getTop(currentIteratedObj) - getTop(scrollObj)) + getYSnapLength(currentIteratedObj, currentIteratedObj.scrollSnapAlignment.y, direction),
+      x: i === 0 ? 0 : (getLeft(currentIteratedObj) - getLeft(scrollObj)) + getXSnapLength(currentIteratedObj, currentIteratedObj.scrollSnapAlignment.x, direction)
     };
 
     currentIteratedObj.snapCoords = snapCoords;
@@ -554,6 +554,24 @@ function getHeight(obj) {
  */
 function getWidth(obj) {
   return obj.offsetWidth;
+}
+
+/**
+ * get an elements height
+ * @param  {Object} obj
+ * @return {Number}
+ */
+function getLeft(obj) {
+  return obj.offsetLeft + obj.clientLeft;
+}
+
+/**
+ * get an elements width
+ * @param  {Object} obj
+ * @return {Number}
+ */
+function getTop(obj) {
+  return obj.offsetTop + obj.clientTop;
 }
 
 /**
