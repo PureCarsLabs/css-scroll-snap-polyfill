@@ -57,6 +57,13 @@ Length units for `scroll-padding` are limited to:
 * percentages
 * pixels
 
+Roadmap
+-------
+
+- Code clean up
+- Testing
+- 100% parity with spec
+
 ## License
 
 [MIT](LICENSE).
