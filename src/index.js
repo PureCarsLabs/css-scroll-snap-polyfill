@@ -402,8 +402,8 @@ function getNextElementSnapPoint(scrollObj, obj, direction) {
 
   const currentSnapElement = obj.snapElements[currentIteration]
   const currentSnapCoords = {
-    x: currentIteration === 0 ? 0 : (getLeft(currentSnapElement) - getLeft(scrollObj)) + getXSnapLength(currentSnapElement, currentSnapElement.scrollSnapAlignment.x, direction),
-    y: currentIteration === 0 ? 0 : (getTop(currentSnapElement) - getTop(scrollObj)) + getYSnapLength(currentSnapElement, currentSnapElement.scrollSnapAlignment.y, direction)
+    x: currentIteration === 0 ? 0 : (getLeft(currentSnapElement) - getLeft(scrollObj)) + getXSnapLength(currentSnapElement, currentSnapElement.scrollSnapAlignment.x, direction) - getXSnapLength(scrollObj, currentSnapElement.scrollSnapAlignment.x, direction),
+    y: currentIteration === 0 ? 0 : (getTop(currentSnapElement) - getTop(scrollObj)) + getYSnapLength(currentSnapElement, currentSnapElement.scrollSnapAlignment.y, direction) - getYSnapLength(scrollObj, currentSnapElement.scrollSnapAlignment.y, direction)
   }
   currentSnapElement.snapCoords = currentSnapCoords
   const xThreshold = currentSnapCoords.x + (direction.x * getWidth(currentSnapElement) * CONSTRAINT_DECIMAL)
@@ -416,8 +416,8 @@ function getNextElementSnapPoint(scrollObj, obj, direction) {
 
     // get objects snap coords by adding obj.top + obj.snaplength.y
     snapCoords = {
-      y: i === 0 ? 0 : (getTop(currentIteratedObj) - getTop(scrollObj)) + getYSnapLength(currentIteratedObj, currentIteratedObj.scrollSnapAlignment.y, direction),
-      x: i === 0 ? 0 : (getLeft(currentIteratedObj) - getLeft(scrollObj)) + getXSnapLength(currentIteratedObj, currentIteratedObj.scrollSnapAlignment.x, direction)
+      y: i === 0 ? 0 : (getTop(currentIteratedObj) - getTop(scrollObj)) + getYSnapLength(currentIteratedObj, currentIteratedObj.scrollSnapAlignment.y, direction) - getYSnapLength(scrollObj, currentIteratedObj.scrollSnapAlignment.y, direction),
+      x: i === 0 ? 0 : (getLeft(currentIteratedObj) - getLeft(scrollObj)) + getXSnapLength(currentIteratedObj, currentIteratedObj.scrollSnapAlignment.x, direction) - getXSnapLength(scrollObj, currentIteratedObj.scrollSnapAlignment.x, direction)
     };
 
     currentIteratedObj.snapCoords = snapCoords;
