@@ -1,17 +1,17 @@
-# scroll-snap-polyfill
+# css-scroll-snap-polyfill
 
 Polyfill for CSS scroll snapping draft.
 
 ## Usage
 
 #### Yarn
-`yarn add scroll-snap-polyfill`
+`yarn add css-scroll-snap-polyfill`
 
 #### NPM
-`npm install --save scroll-snap-polyfill`
+`npm install --save css-scroll-snap-polyfill`
 
 ```js
-import scrollSnapPolyfill from 'scroll-snap-polyfill'
+import scrollSnapPolyfill from 'css-scroll-snap-polyfill'
 
 // whenever dom is ready
 scrollSnapPolyfill()
