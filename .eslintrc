@@ -1,0 +1,7 @@
+{
+  "extends": "standard",
+  "globals": {
+    "cancelAnimationFrame": true,
+    "Polyfill": true
+  }
+}

@@ -10,12 +10,24 @@ Polyfill for CSS scroll snapping draft.
 #### NPM
 `npm install --save css-scroll-snap-polyfill`
 
+Code example:
+
 ```js
 import scrollSnapPolyfill from 'css-scroll-snap-polyfill'
 
 // whenever dom is ready
 scrollSnapPolyfill()
 ```
+
+Usage with React:
+
+```js
+// must use inside componentDidMount so that the DOM is ready
+componentDidMount() {
+  scrollSnapPolyfill()
+}
+```
+
 
 
 ## Dependencies
