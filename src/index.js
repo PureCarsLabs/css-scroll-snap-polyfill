@@ -673,12 +673,7 @@ export default () => {
   /**
    * Feature detect scroll-snap-type, if it exists then do nothing (return)
    */
-  if ('scrollSnapAlign' in document.documentElement.style ||
-      'webkitScrollSnapAlign' in document.documentElement.style ||
-      'msScrollSnapAlign' in document.documentElement.style) {
-    // just return void to stop executing the polyfill.
-    return
-  }
+  if (typeof CSS != 'undefined' && CSS.supports('scroll-snap-align')) return;
 
   Polyfill({
     declarations: [
